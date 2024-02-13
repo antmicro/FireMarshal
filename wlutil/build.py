@@ -500,9 +500,12 @@ def makeOpenSBI(config, nodisk=False):
             if base + memsize > size:
                 size = base + memsize
 
+    # Platform
+    platform = config['firmware'].get('opensbi-platform', 'generic')
+
     # Align to next MiB
     payloadSize = ((size + 0xfffff) // 0x100000) * 0x100000
-    makeArgsOpts = ['PLATFORM=generic',
+    makeArgsOpts = ['PLATFORM=' + platform,
                     'FW_PAYLOAD_PATH=' + str(payload),
                     'FW_PAYLOAD_FDT_ADDR=0x$(shell printf "%X" '
                     '$$(( $(FW_TEXT_START) + $(FW_PAYLOAD_OFFSET) + ' +
@@ -516,7 +519,7 @@ def makeOpenSBI(config, nodisk=False):
     wlutil.run(['make'] + wlutil.getOpt('linux-make-args') + args,
                cwd=config['firmware']['source'])
 
-    return config['firmware']['source'] / 'build' / 'platform' / 'generic' / 'firmware' / 'fw_payload.elf'
+    return config['firmware']['source'] / 'build' / 'platform' / platform / 'firmware' / 'fw_payload.elf'
 
 
 def makeBin(config, nodisk=False):
