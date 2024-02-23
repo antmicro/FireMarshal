@@ -15,5 +15,5 @@
       "opensbi-platform": "generic"
   },
   "overlay": "../../../../../coremark/overlay",
-  "command": "/coremark.riscv"
+  "command": "/coremark.riscv 0 0 0 10"
 }
