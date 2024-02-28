@@ -8,11 +8,14 @@
   },
   "linux" : {
       "source" : "../../linux",
-      "config" : "linux-config"
+      "config" : "linux-config",
+      "modules" : {
+          "iceblk" : "../../drivers/iceblk-driver"
+      }
   },
   "firmware" : {
       "opensbi-src" : "../../firmware/opensbi",
-      "opensbi-platform": "generic"
+      "opensbi-platform": "chipyard"
   },
   "overlay": "../../../../../coremark/overlay",
   "command": "/coremark.riscv 0 0 0 10"
