@@ -6,7 +6,7 @@
 	url = https://github.com/riscv/opensbi.git
 [submodule "boards/default/distros/br/buildroot"]
 	path = boards/default/distros/br/buildroot
-	url = https://github.com/buildroot/buildroot.git
+	url = ../buildroot.git
 [submodule "wlutil/busybox"]
 	path = wlutil/busybox
 	url = https://github.com/mirror/busybox.git
